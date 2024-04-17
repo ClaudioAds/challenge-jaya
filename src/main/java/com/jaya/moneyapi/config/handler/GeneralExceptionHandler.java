@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -28,6 +29,18 @@ public class GeneralExceptionHandler {
         }
         log.error(messages.toString());
         return new ResponseEntity<>(messages, HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler({ InvalidCurrency.class })
+    public ResponseEntity<ErrorDtoResponse> handleInvalidCurrency(InvalidCurrency ex) {
+        log.error(ex.getMessage());
+        return new ResponseEntity<>(ErrorDtoResponse.builder().message(ex.getMessage()).build(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler({ MissingServletRequestParameterException.class })
+    public ResponseEntity<ErrorDtoResponse> handleMissingServletRequestParameterException(Exception ex) {
+        log.error(ex.getMessage());
+        return new ResponseEntity<>(ErrorDtoResponse.builder().message(ex.getMessage()).build(), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler({ Exception.class })

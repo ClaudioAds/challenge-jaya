@@ -1,27 +1,32 @@
-package com.jaya.moneyapi.dto.response;
+package com.jaya.moneyapi.model;
 
-import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
 @Builder
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@ApiModel("ExchangeCurrencyResponseModel")
-public class ExchangeRatesDtoResponse {
+public class ExchangeRecord {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", nullable = false)
     private Long transactionID;
     private Long userdID;
     private String fromCurrency;
     private String toCurrency;
-    private BigDecimal fromValue;
-    private BigDecimal toValue;
+
+    @ApiModelProperty(value = "source value")
+    private BigDecimal value;
     private BigDecimal exchangeRate;
     private LocalDateTime dateTime;
 }

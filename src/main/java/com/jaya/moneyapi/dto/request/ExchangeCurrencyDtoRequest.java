@@ -1,5 +1,6 @@
 package com.jaya.moneyapi.dto.request;
 
+import io.swagger.annotations.ApiModel;
 import lombok.Builder;
 import lombok.Data;
 
@@ -8,6 +9,7 @@ import java.math.BigDecimal;
 
 @Data
 @Builder
+@ApiModel("ExchangeCurrencyRequestModel")
 public class ExchangeCurrencyDtoRequest {
 
     @NotNull(message = "Enter user ID!")
