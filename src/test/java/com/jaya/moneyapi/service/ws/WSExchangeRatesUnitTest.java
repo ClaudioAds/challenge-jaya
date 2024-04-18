@@ -15,6 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.io.IOException;
+import java.util.Date;
 
 
 @ExtendWith(MockitoExtension.class)
@@ -38,7 +39,12 @@ class WSExchangeRatesUnitTest {
     @Test
     @DisplayName("Should receive WS response")
     void shouldReceiveWSResponse() throws JsonProcessingException {
-        WSExchangeRatesDtoResponse wsExchangeRatesDtoResponse = new EasyRandom().nextObject(WSExchangeRatesDtoResponse.class);
+        WSExchangeRatesDtoResponse wsExchangeRatesDtoResponse = new WSExchangeRatesDtoResponse();
+        wsExchangeRatesDtoResponse.setDate(wsExchangeRates.findExchangeRates().getDate());
+        wsExchangeRatesDtoResponse.setSuccess(wsExchangeRates.findExchangeRates().isSuccess());
+        wsExchangeRatesDtoResponse.setRates(wsExchangeRates.findExchangeRates().getRates());
+        wsExchangeRatesDtoResponse.setTimestamp(wsExchangeRates.findExchangeRates().getTimestamp());
+        wsExchangeRatesDtoResponse.setBase(wsExchangeRates.findExchangeRates().getBase());
         mockWebServer.enqueue(new MockResponse().setBody(new ObjectMapper().writeValueAsString(wsExchangeRatesDtoResponse)).addHeader("Content-Type", "application/json"));
         assertEquals(wsExchangeRatesDtoResponse, wsExchangeRates.findExchangeRates());
 
