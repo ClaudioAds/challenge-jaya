@@ -68,8 +68,8 @@ class ExchangeRatesServiceUnitTest {
         assertEquals(exchangeRatesDtoRequest.getFromCurrency(), exchangeRecord.getFromCurrency());
         assertEquals(exchangeRatesDtoRequest.getToCurrency(), exchangeRecord.getToCurrency());
         assertNotNull(exchangeRecord.getDateTime());
-        assertEquals(0.18, exchangeRecord.getExchangeRate().doubleValue());
-        assertEquals(1.8, exchangeRecord.getToValue().doubleValue());
+        assertEquals(0.1839080, exchangeRecord.getExchangeRate().doubleValue());
+        assertEquals(1.839080, exchangeRecord.getToValue().doubleValue());
 
     }
 
