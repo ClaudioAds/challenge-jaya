@@ -27,7 +27,7 @@ class WSExchangeRatesUnitTest {
     void setup() throws IOException {
         mockWebServer = new MockWebServer();
         mockWebServer.start();
-        wsExchangeRates = new WSExchangeRates(String.format("http://localhost:%s?base=EUR",  mockWebServer.getPort()), "85928cc847c46e21e95c2a2cea3e9725");
+        wsExchangeRates = new WSExchangeRates(String.format("https://api.apilayer.com/exchangerates_data/latest?base=EUR",  mockWebServer.getPort()), "04DwFO4mayyX8AoRHU0BolReHhbruQbX");
     }
 
     @AfterEach

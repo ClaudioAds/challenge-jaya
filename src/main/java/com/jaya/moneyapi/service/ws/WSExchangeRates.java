@@ -8,16 +8,16 @@ import org.springframework.web.reactive.function.client.WebClient;
 @Service
 public class WSExchangeRates {
     private final String baseUrl;
-    private final String accessKey;
+    private final String apiKey;
 
 
-    public WSExchangeRates(@Value("${ws.url}") String baseUrl, @Value("${ws.access-token}") String accessKey) {
+    public WSExchangeRates(@Value("${ws.url}") String baseUrl, @Value("${ws.access-token}") String apiKey) {
         this.baseUrl = baseUrl;
-        this.accessKey = accessKey;
+        this.apiKey = apiKey;
     }
 
     public WSExchangeRatesDtoResponse findExchangeRates(){
-        return WebClient.create(baseUrl + "&access_key=" + accessKey)
+        return WebClient.create(baseUrl + "&apikey=" + apiKey)
                 .get().retrieve().bodyToMono(WSExchangeRatesDtoResponse.class).block();
     }
 }

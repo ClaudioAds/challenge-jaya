@@ -8,20 +8,20 @@ import org.springframework.stereotype.Component;
 public class CurrencyFactory {
 
     public Currency buildCurrency(String description){
-        if (description.equalsIgnoreCase(CurrencyBRL.class.getSimpleName())){
-            return new CurrencyBRL();
+        if (description.equalsIgnoreCase(BRL.class.getSimpleName())){
+            return new BRL();
         }
 
-        if (description.equalsIgnoreCase(CurrencyUSD.class.getSimpleName())){
-            return new CurrencyUSD();
+        if (description.equalsIgnoreCase(USD.class.getSimpleName())){
+            return new USD();
         }
 
-        if (description.equalsIgnoreCase(CurrencyEUR.class.getSimpleName())){
-            return new CurrencyEUR();
+        if (description.equalsIgnoreCase(EUR.class.getSimpleName())){
+            return new EUR();
         }
 
-        if (description.equalsIgnoreCase(CurrencyJPY.class.getSimpleName())){
-            return new CurrencyJPY();
+        if (description.equalsIgnoreCase(JPY.class.getSimpleName())){
+            return new JPY();
         }
 
         throw new InvalidCurrency("Currency '" + description+ "' is not available!");

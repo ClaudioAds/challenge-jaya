@@ -4,10 +4,10 @@ import com.jaya.moneyapi.dto.response.ws.WSRatesDtoResponse;
 
 import java.math.BigDecimal;
 
-public class CurrencyBRL implements Currency{
+public class EUR implements Currency{
 
     @Override
     public BigDecimal getEuroExchangeRate(WSRatesDtoResponse wsRatesDtoResponse) {
-        return BigDecimal.valueOf(wsRatesDtoResponse.getBRL());
+        return BigDecimal.valueOf(wsRatesDtoResponse.getEUR());
     }
 }
