@@ -40,7 +40,7 @@ class WSExchangeRatesUnitTest {
     void shouldReceiveWSResponse() throws JsonProcessingException {
         WSExchangeRatesDtoResponse wsExchangeRatesDtoResponse = new EasyRandom().nextObject(WSExchangeRatesDtoResponse.class);
         mockWebServer.enqueue(new MockResponse().setBody(new ObjectMapper().writeValueAsString(wsExchangeRatesDtoResponse)).addHeader("Content-Type", "application/json"));
-        assertEquals(wsExchangeRatesDtoResponse,wsExchangeRates.findExchangeRates());
+        assertEquals(wsExchangeRatesDtoResponse, wsExchangeRates.findExchangeRates());
 
     }
 }
